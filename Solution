@@ -1,0 +1,42 @@
+#Capstone project 1
+for steps including screenshots checkout the word document.
+1. Launch an EC2 Instance:
+   - Go to the AWS Management Console.
+   - Navigate to EC2.
+   - Launch an EC2 instance with the desired specifications.
+   - Configure security groups to allow HTTP/HTTPS traffic.
+
+Connect using Putty:
+Update your system using the command
+    sudo apt-get update
+Then use this command to install Apache2
+    sudo apt-get install apache2
+
+For bringing the file from local system to cloud, as we connected using putty we can open command prompt in windows and give below:
+    pscp -i proj_1.ppk "index.php" ubuntu@ 54.198.180.212:/home/ubuntu
+ 
+On ubuntu:
+Remove existing index.html file and add the php index file to var/www/html
+Then install php-mysql using the following command
+  add-apt-repository ppa:ondrej/php
+  apt-get update
+  apt-get install mysql-client -y
+  apt install php5.6 php5.6-mysqli -y
+ 
+ 2. Create an RDS Instance:
+   - In the AWS Management Console, navigate to RDS.
+   - Launch a new RDS instance (MySQL) with the desired specifications.
+   - Set the DB instance identifier, master username, and password.
+
+ 3. Create Database & Table in RDS Instance:
+   - Connect to the RDS instance using a MySQL client.
+ 	  mysql -h project-1.cedw6r3adgfk.us-east-1.rds.amazonaws.com -u admin -p
+ 
+   - Create a database named 'intel': `CREATE DATABASE intel;`
+   - Use the 'intel' database: `USE intel;`
+   - Create a table named 'data': 
+
+5. Enable Auto Scaling on EC2 Instances:
+Create a AMI from existing EC2 instance, 
+   - Set up an Auto Scaling Group.
+   - create a launch configuration along with load balancer with min 2 capacity
